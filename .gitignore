@@ -3,7 +3,10 @@
 .pioenvs/
 .piolibdeps/
 
-# Secrets — fill these from the *.example.h templates (gitignored)
+# Secrets — fill these from the *.example.h templates (never commit)
+# config.h holds your real Wi-Fi password and API key; only config.example.h is tracked.
+config.h
+**/config.h
 secrets.h
 **/secrets.h
 tls_cert.h
