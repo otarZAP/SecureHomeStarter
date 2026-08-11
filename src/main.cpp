@@ -35,7 +35,7 @@ void logEvent(const char* eventName, int value) {
   serializeJson(doc, Serial);
   Serial.println();
 
-  // POST to OPERATOR if in station mode and URL is configured
+  // POST to the hub server if in station mode and URL is configured
   if (!usingFallbackAp && strlen(PLATFORM_URL) > 0 &&
       WiFi.status() == WL_CONNECTED) {
     String payload = "[";

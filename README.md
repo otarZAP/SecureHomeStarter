@@ -2,13 +2,13 @@
 
 **Status:** Complete  
 **Board:** ESP32 dev board  
-**Role:** Lightweight starter project — PIR motion + door sensor with direct OPERATOR POST
+**Role:** Lightweight starter project — PIR motion + door sensor with direct HTTP event POST
 
 ---
 
 ## What It Does
 
-SecureHomeStarter is the minimal version of the sensor concept. It monitors a PIR motion sensor and a door/window reed switch, then POSTs JSON events to OPERATOR (or any HTTP endpoint) on state change. No SPIFFS buffering, no OTA, no OLED — just the sensor logic and a `/status` endpoint.
+SecureHomeStarter is the minimal version of the sensor concept. It monitors a PIR motion sensor and a door/window reed switch, then POSTs JSON events to your hub server (or any HTTP endpoint) on state change. No SPIFFS buffering, no OTA, no OLED — just the sensor logic and a `/status` endpoint.
 
 This project is useful as a reference implementation or starting point for new sensor nodes.
 
@@ -49,8 +49,8 @@ Copy `include/config.example.h` → `include/config.h` and fill in:
 #define PIR_PIN          27
 #define DOOR_PIN         14
 #define DOOR_OPEN_IS_HIGH true   // true = HIGH when door open; false = NC reed (LOW = open)
-#define PLATFORM_URL     "http://192.168.4.1/api/events"   // OPERATOR IP
-#define API_KEY          "devkey1234"                       // must match OPERATOR's DEVICE_API_KEY
+#define PLATFORM_URL     "http://192.168.4.1/api/events"   // your hub server IP
+#define API_KEY          "devkey1234"                       // must match your server's device API key
 ```
 
 Leave `PLATFORM_URL` blank (`""`) to log to Serial only without uploading.
@@ -76,12 +76,3 @@ cd ESP32Projects/SecureHomeStarter
 pio run -t upload
 pio device monitor   # 115200 baud
 ```
-
----
-
-## Companion Tools
-
-| Tool | Relationship |
-|---|---|
-| SENSOR_HUB | Full-featured version: OLED, SPIFFS buffering, tamper detection, OTA |
-| OPERATOR | Receives events from this device via `/api/events` |

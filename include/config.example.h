@@ -20,8 +20,8 @@
 // true means contact is OPEN when pin reads HIGH.
 #define DOOR_OPEN_IS_HIGH true
 
-// ─── OPERATOR integration ─────────────────────────────────────────────────
-// Set PLATFORM_URL to your OPERATOR device's IP to enable event upload.
+// ─── Event upload integration ─────────────────────────────────────────────
+// Set PLATFORM_URL to your hub server's IP to enable event upload.
 // Leave empty ("") to log to Serial only.
-#define PLATFORM_URL  "http://192.168.4.1/api/events"   // OPERATOR IP:port
-#define API_KEY       "devkey1234"                       // must match OPERATOR DEVICE_API_KEY
+#define PLATFORM_URL  "http://192.168.4.1/api/events"   // your hub server IP:port
+#define API_KEY       "devkey1234"                       // must match your server's device API key
